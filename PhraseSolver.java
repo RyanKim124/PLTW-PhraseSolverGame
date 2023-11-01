@@ -40,7 +40,18 @@ public class PhraseSolver
     {
       
       /* your code here - game logic */
-      
+
+      System.out.print("Current Player: ");
+      if (currentPlayer == 1)
+      {
+        System.out.println(player1.getName());
+      }
+      else if (currentPlayer == 2)
+      {
+        System.out.println(player2.getName());
+      }
+      System.out.println("Partially Solved Phrase: " + board.getPartialPhrase());
+      System.out.println("Current letter value: " + board.getLetterValue());
       
       /* your code here - determine how game ends */
       solved = true; // the game ends when the phrase is found and solved becomes true

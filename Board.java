@@ -44,7 +44,12 @@ public class Board {
    */
 
   public String getSolvedPhrase() {
-    return phrase;
+    return solvedPhrase;
+  }
+
+  public String getPartialPhrase()
+  {
+    return solvedPhrase;
   }
 
   /* your code here - accessor(s) */
