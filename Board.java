@@ -8,22 +8,18 @@ import java.util.Scanner;
 import java.io.File;
 
 /**
- * Handles the Board state of the game, contains the solved phrase as well as the formatted guessed phrase.
+ * Handles the Board state of the game, contains the solved phrase as well as
+ * the formatted guessed phrase.
  */
 public class Board {
-  private String solvedPhrase;
-  private String phrase;
+  private String solvedPhrase; // the part of the phrase that has already been solved
+  private String phrase; // the full phrase
   private int currentLetterValue;
 
   /* your code here - constructor(s) */
   public Board() {
     solvedPhrase = "";
     phrase = loadPhrase();
-
-    // TEST CODE
-    System.out.println("Phrase: " + phrase);
-    // END OF TEST CODE
-
     setLetterValue();
   }
 
@@ -43,22 +39,22 @@ public class Board {
    * @return The solved phrase
    */
 
-  public String getSolvedPhrase() {
-    return solvedPhrase;
+  public String getPhrase() {
+    return phrase;
   }
 
-  public String getPartialPhrase()
-  {
+  public String getPartialPhrase() {
     return solvedPhrase;
   }
 
   /* your code here - accessor(s) */
 
   /**
-   * Checks if the guess argument is equal to the phrase, if so change solvedPhrase and return true, return false otherwise.
+   * Checks if the guess argument is equal to the phrase, if so change
+   * solvedPhrase and return true, return false otherwise.
    * 
    * Postcondition:
-   *  If the phrase does equal the guess, change solvedPhrase into the phrase
+   * If the phrase does equal the guess, change solvedPhrase into the phrase
    * 
    * @param guess Checks if this is equal to the phrase
    * @return if the guess is equal to the phrase
@@ -66,7 +62,8 @@ public class Board {
 
   public boolean solvePhrase(String guess) {
     if (guess.equals(phrase)) {
-      // If the guess is equal to the right phrase, change solved phrase into the right phrase
+      // If the guess is equal to the right phrase, change solved phrase into the
+      // right phrase
 
       solvedPhrase = phrase;
     }
@@ -75,15 +72,32 @@ public class Board {
     return (guess == phrase);
   }
 
+  /**
+   * Checks if the partial phrase is equal to the phrase, if so return true
+   * 
+   * Precondition:
+   * PartialPhrase exists and is in the fortmat of "1 2 3 4 5 6 7 8 9 0"
+   * 
+   */
+
+  public boolean checkPartialPhrase() {
+    String str = "";
+    for (int i = 0; i < getPartialPhrase().length(); i += 2) {
+      str += getPartialPhrase().charAt(i);
+    }
+
+    return str.equals(getPhrase());
+  }
+
   /* ---------- provided code, do not modify ---------- */
 
   /**
    * Sets the letter value to a random value from 1-10 inclusive.
    * 
    * Postcondition:
-   *  currentLetterValue is a random value from 1-10 inclusive.
+   * currentLetterValue is a random value from 1-10 inclusive.
    */
-  
+
   public void setLetterValue() {
     // Generate random int from 1-10 inclusive
 
@@ -95,7 +109,7 @@ public class Board {
    * Checks if the guess argument is equal to the phrase
    * 
    * Precondition:
-   *  phrase exists
+   * phrase exists
    * 
    * @param guess Checks if this is equal to the phrase
    * @return If the letter was solved or not.
@@ -112,10 +126,11 @@ public class Board {
    * Loads a phrase at random from the file phrases.txt
    * 
    * Precondition:
-   *  phrases.txt exists and is populated.
+   * phrases.txt exists and is populated.
    * Postcondition:
-   *  The instance variable phrase is populated
-   *  The instance solvedPhrase is populated with _ and a space character for each letter in the phrase.
+   * The instance variable phrase is populated
+   * The instance solvedPhrase is populated with _ and a space character for each
+   * letter in the phrase.
    * 
    * @return The phrase that was loaded
    */
@@ -139,7 +154,7 @@ public class Board {
     // Generates a random number from 1 to the number of lines in phrases.txt
     int randomInt = (int) ((Math.random() * numOfLines) + 1);
 
-    // Try to get the random phrase 
+    // Try to get the random phrase
     try {
       int count = 0;
       Scanner sc = new Scanner(new File("phrases.txt"));
@@ -154,7 +169,8 @@ public class Board {
       System.out.println("Error reading or parsing phrases.txt");
     }
 
-    // Set up solvedPhrase, in the format of underscores for each character and spaces between them.
+    // Set up solvedPhrase, in the format of underscores for each character and
+    // spaces between them.
     for (int i = 0; i < tempPhrase.length(); i++) {
       if (tempPhrase.substring(i, i + 1).equals(" ")) {
         solvedPhrase += "  ";
@@ -168,18 +184,20 @@ public class Board {
 
   /**
    * Checks if the guess argument is in the phrase
-   * If so, replace all instances of the character in the solvedPhrase with the guess
+   * If so, replace all instances of the character in the solvedPhrase with the
+   * guess
    * 
    * Precondition:
-   *  SolvedPhrase exists and is in the format of _ and spaces between them.
+   * SolvedPhrase exists and is in the format of _ and spaces between them.
    * Postcondition:
-   *  Replaces all underscores in SolvedPhrase if the chracter matches the real phrase.
+   * Replaces all underscores in SolvedPhrase if the chracter matches the real
+   * phrase.
    * 
    * @param guess
    * @return If the guess was in the phrase.
    */
   public boolean guessLetter(String guess) {
-    // 
+    //
     boolean foundLetter = false;
     String newSolvedPhrase = "";
 

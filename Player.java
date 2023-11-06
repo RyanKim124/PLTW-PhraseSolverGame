@@ -16,7 +16,10 @@ public class Player {
   private int points; // initializing attributes which each player will have
   private String name;
 
-  /** This method initializes a Player object with 0 points and asks the player for a name. */
+  /**
+   * This method initializes a Player object with 0 points and asks the player for
+   * a name.
+   */
   public Player() {
     this.points = 0; // setting the points to 0
 
@@ -27,19 +30,23 @@ public class Player {
     this.name = newName; // setting the attribute and starting the game
     System.out.println("Welcome to the game " + name + "!"); // welcoming them
   }
-  
-  /**  This method initializes a Player object with 0 points and a name that the user gives.
-   *   @param name The name of the player.
-   *   
-  */
+
+  /**
+   * This method initializes a Player object with 0 points and a name that the
+   * user gives.
+   * 
+   * @param name The name of the player.
+   * 
+   */
   public Player(String name) {
     this.points = 0; // setting the points to 0
     this.name = name; // setting the name to what it needs to be
     System.out.println("Welcome to the game " + name + "!"); // starting the game and welcoming them
   }
 
-  /** This method returns the player's current points as an Integer.
-   *  Preconditions: points exists
+  /**
+   * This method returns the player's current points as an Integer.
+   * Preconditions: points exists
    * 
    * @return The number of points the player has.
    */
@@ -47,8 +54,9 @@ public class Player {
     return points; // gives how many points that player has
   }
 
-  /** This method returns the player's name as a String.
-   *  Preconditions: there is a name
+  /**
+   * This method returns the player's name as a String.
+   * Preconditions: there is a name
    * 
    * @return The name of the player.
    */
@@ -56,7 +64,8 @@ public class Player {
     return name; // gives the player's name
   }
 
-  /** This method sets the player's points to whatever the user provides.
+  /**
+   * This method sets the player's points to whatever the user provides.
    * 
    * @param newPoints The new amount of points the player should have.
    * 
@@ -65,10 +74,22 @@ public class Player {
     points = newPoints; // sets the amount of points the player has to what it needs to be
   }
 
-  /** This method set's the player's name to whatever the user provides.
+  /**
+   * This method adds an amount to the player's total points.
+   * 
+   * @param pointsAdded The amount of points that will be added to the player's
+   *                    score.
+   * 
+   */
+  public void addPoints(int pointsAdded) {
+    points += pointsAdded; // adds the amount of points that need to be added
+  }
+
+  /**
+   * This method set's the player's name to whatever the user provides.
    * 
    * @param newName The new name of the player.
-  */
+   */
   public void setName(String newName) {
     name = newName; // sets the name to whatever the player's new name is
   }
